@@ -15,15 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.http import HttpResponse
-from django.urls import include
 
 def home(request):
     return HttpResponse("Welcome to the Community Services API")
 
 urlpatterns = [
-    path('', home),
-    path('admin/', admin.site.urls),
-    path('api/', include('blog.urls')),
+    path('', home),                                      # Root welcome message
+    path('admin/', admin.site.urls),                     # Django admin panel
+    path('api/', include('blog.urls')),    # DRF endpoints from your app
 ]
